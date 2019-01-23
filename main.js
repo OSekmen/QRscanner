@@ -89,7 +89,7 @@ function plot() {
 }
 
 function scanQR(contentR) {
-
+    
     Instascan.Camera.getCameras().then(cameras => {
         if (cameras.length > 0) {
             scanner.start(cameras[0]);
@@ -105,7 +105,8 @@ function scanQR(contentR) {
         console.log(content);
         decode(content);
     });
-
+    
+    
         
 }
 
