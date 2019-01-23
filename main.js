@@ -97,7 +97,7 @@ function scanQR(contentR) {
             console.error("Please enable Camera!");
         }
     });
-    scanner.addListener('scan', function (content) {
+    scanner.addListener('active', function (content) {
         alert('Do you want to open this page?: ' + content);
         console.log(content);
         //window.open(content, "_blank"); //Open Casio site.
