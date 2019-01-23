@@ -7,16 +7,10 @@ var functie = "";
     
 
 window.onload = function () {
-    
     scanQR();
-
-    
-       //  console.log(content);
-       // decode();
-     //   plot();
-
-       
-   
+    //  console.log(content);
+    // decode();
+    //   plot();
 }
 
 function calc(x) {
