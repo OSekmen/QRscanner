@@ -14,10 +14,6 @@ window.onload = function () {
        //  console.log(content);
        // decode();
      //   plot();
-    
-   
-    
-   
 
        
    
