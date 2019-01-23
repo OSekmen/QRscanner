@@ -106,8 +106,9 @@ function scanQR(contentR) {
         decode(content);
     });
 
-    
+        
 }
+
 
     
 
