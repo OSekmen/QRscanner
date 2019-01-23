@@ -1,8 +1,8 @@
 ﻿var capture;
-var scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+//var scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
 var QRinput;
 var functie = "";
-//var content= "";
+var content= "";
 
     
 
@@ -89,7 +89,7 @@ function plot() {
 }
 
 function scanQR(contentR) {
-    
+    /*
     Instascan.Camera.getCameras().then(cameras => {
         if (cameras.length > 0) {
             scanner.start(cameras[0]);
@@ -105,7 +105,7 @@ function scanQR(contentR) {
         console.log(content);
         decode(content);
     });
-    
+    */
     
         
 }
