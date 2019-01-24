@@ -1,4 +1,7 @@
-﻿
+﻿var content = "http://wes.casio.com/math/index.php?q=I-235F+U-000C00090252+M-C10000AD00+S-001510100000100E1010B0005F8F+R-0125000000000000010200000000000000000000+E-3548C91A321B";
+var QRinput;
+var functie = "";
+
 function decode(content) {
      //scanner enable
     var dict = {
@@ -65,5 +68,45 @@ function decode(content) {
     
     console.log(functie);
     plot();
+}
+
+function scanQR() {
+
+    var video = document.createElement("video");
+    var canvasElement = document.getElementById("canvas");
+    var canvas = canvasElement.getContext("2d");
+
+
+    // Use facingMode: environment to attemt to get the front camera on phones
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function (stream) {
+        video.srcObject = stream;
+        video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+        video.play();
+        requestAnimationFrame(tick);
+    });
+
+
+
+    function tick() {
+
+        if (video.readyState === video.HAVE_ENOUGH_DATA) {
+            canvasElement.height = video.videoHeight;
+            canvasElement.width = video.videoWidth;
+            canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+            var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+            var code = jsQR(imageData.data, imageData.width, imageData.height, {
+                inversionAttempts: "dontInvert",
+            });
+            if (code) {
+                decode(code.data);
+                video.srcObject.getTracks()[0].stop();
+                //canvasElement.style.visibility = "hidden";
+
+            }
+        }
+        requestAnimationFrame(tick);
+    }
+
+
 }
 
