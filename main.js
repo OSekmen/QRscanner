@@ -102,6 +102,7 @@ function scanQR() {
         video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
         video.play();
         requestAnimationFrame(tick);
+        tracks.forEach
     });
    
 
@@ -109,7 +110,6 @@ function scanQR() {
     function tick() {
 
         if (video.readyState === video.HAVE_ENOUGH_DATA) {
-
             canvasElement.height = video.videoHeight;
             canvasElement.width = video.videoWidth;
             canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
@@ -119,7 +119,9 @@ function scanQR() {
             });
             if (code) {
                 decode(code.data);
-                /////////// stop video stream
+                video.srcObject.getTracks()[0].stop();
+                canvasElement.style.visibility = "hidden";
+                
             }
         }
         requestAnimationFrame(tick);
