@@ -1,4 +1,4 @@
-﻿var content = "http://wes.casio.com/math/index.php?q=I-235F+U-000C00090252+M-C10000AD00+S-001510100000100E1010B0005F8F+R-0125000000000000010200000000000000000000+E-3548C91A321B";
+﻿var content = "http://wes.casio.com/math/index.php?q=I-235F+U-000C00090252+M-C10000AD00+S-001510100000100E1010B0005F8F+R-0125000000000000010200000000000000000000+E-3548C91A331B";
 var QRinput;
 var functie = "";
 
@@ -98,9 +98,10 @@ function scanQR() {
                 inversionAttempts: "dontInvert",
             });
             if (code) {
+                
                 decode(code.data);
                 video.srcObject.getTracks()[0].stop();
-                //canvasElement.style.visibility = "hidden";
+                canvasElement.style.visibility = "hidden";
 
             }
         }

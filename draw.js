@@ -1,23 +1,27 @@
-function plot() {
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-    var data = { X: [], Y: [] };
-    var XGridSpacing = 50;
-    var YGridSpacing = 50;
+var XGridSpacing = 100;
+var YGridSpacing = 50;
 
-    // ctx.fillStyle = "#dddddd";
-    //ctx.fillRect(0, 0, canvas.width, canvas.height);
+function plot() {
+    
+    var data = { Xpix: [], Ypix: [], Xreal: [], Yreal: [] };
+    
+    
 
     //add all x values to array
-    for (var i = -50; i < 50; i += 0.1) {
-        data.X.push(i);
+    var min = -canvas.width / 2;
+    var max = canvas.width / 2;
+    for (var i = min; i < max; i += 1) {
+        data.Xpix.push(i);
+        data.Xreal.push((i / XGridSpacing));
+        
     }
 
     //calculate all Y values & add to array
-    for (var i = 0; i < data.X.length; i++) {
-        data.Y.push(calc(data.X[i]));
+    for (var i = 0; i < data.Xpix.length; i++) {
+        data.Ypix.push(calc(data.Xpix[i]));
+        data.Yreal.push(calc(data.Xreal[i]));
     }
-
+    
     ctx.translate(canvas.width / 2, canvas.height / 2);
 
 
@@ -31,13 +35,13 @@ function plot() {
     ctx.lineTo(0, -canvas.width / 2);
     ctx.stroke();
 
-
+    
 
     //horizontal
     ctx.beginPath();
     ctx.strokeStyle = "#009933";
     ctx.lineWidth = "1";
-    for (var i = XGridSpacing; i < canvas.height; i += XGridSpacing) {
+    for (var i = YGridSpacing; i < canvas.height; i += YGridSpacing) {
 
 
         ctx.moveTo((-canvas.width / 2), i);
@@ -46,18 +50,18 @@ function plot() {
         ctx.lineTo(canvas.width, -i);
 
         ctx.font = "20px Arial";
-        ctx.fillText(i / XGridSpacing, i, 0);
-        ctx.fillText("-" + i / XGridSpacing, -i, 0);
+        ctx.fillText((i / YGridSpacing), 0, -i);
+        ctx.fillText("-" + (i / YGridSpacing), 0, i);
     }
     //vertical
-    for (var i = YGridSpacing; i < canvas.height; i += YGridSpacing) {
+    for (var i = XGridSpacing; i < canvas.height; i += XGridSpacing) {
         ctx.moveTo(i, (canvas.height / 2));
         ctx.lineTo(i, -canvas.height);
         ctx.moveTo(-i, (canvas.height / 2));
         ctx.lineTo(-i, -canvas.height);
 
-        ctx.fillText(i / XGridSpacing, 0, i);
-        ctx.fillText("-" + i / XGridSpacing, 0, -i);
+        ctx.fillText((i / XGridSpacing), i, 0);
+        ctx.fillText("-" + (i / XGridSpacing), -i, 0);
     }
     ctx.stroke();
 
@@ -65,8 +69,8 @@ function plot() {
     ctx.beginPath();
     ctx.lineWidth = "2";
     ctx.strokeStyle = "#2818bc";
-    for (var i = 0; i < data.X.length; i++) {
-        ctx.lineTo(data.X[i] * XGridSpacing, data.Y[i] * YGridSpacing);
+    for (var i = 0; i < data.Xreal.length; i++) {
+        ctx.lineTo(data.Xreal[i] * XGridSpacing, data.Yreal[i] * YGridSpacing);
     }
 
 
