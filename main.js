@@ -6,9 +6,9 @@ var functie = "";
     
 
 window.onload = function () {
-    //scanQR();
+    scanQR();
     //  console.log(content);
-     decode(content);
+    // decode(content);
     //   plot();
 }
 
