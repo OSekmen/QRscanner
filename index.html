@@ -3,21 +3,37 @@
 <head>
     <meta charset="utf-8" />
     <title>QR_code</title>
+    <style>
+        .slidecontainer {
+            width: 100%; /* Width of the outside container */
+        }
 
-    <script src="draw.js"></script>
-    <script src="inputCode.js"></script>
-    <script src="jsQR.js"></script>
+        /* The slider itself */
+        .slider {
+            -webkit-appearance: none; /* Override default CSS styles */
+            appearance: none;
+            width: 100%; /* Full-width */
+            height: 25px; /* Specified height */
+            background: #d3d3d3; /* Grey background */
+            outline: none; /* Remove outline */
+            opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+            -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+            transition: opacity .2s;
+        }
+    </style>
     <link href="css/default.css" rel="stylesheet" />
 </head>
 <body>
 
-    <canvas id="canvas" height="900" width="900"></canvas>
     <canvas onclick="trackMouse(event)" id="graph" height="900" width="900"></canvas>
+
+    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    <canvas id="canvas" height="900" width="900"></canvas>
+
     <script src="main.js"></script>
-
-    <script>
-
-    </script>
+    <script src="draw.js"></script>
+    <script src="inputCode.js"></script>
+    <script src="jsQR.js"></script>
 
 
 </body>

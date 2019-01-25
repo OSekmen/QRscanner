@@ -4,8 +4,8 @@ var ctx = canvas.getContext("2d");
 window.onload = function () {
 
 
-      scanQR(); //use camera
-    //decode(content); //use build in template
+    //scanQR(); //use camera
+    decode(content); //use build in template
     trackMouse();
 }
 
