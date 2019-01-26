@@ -1,5 +1,5 @@
 ﻿//var content = "http://wes.casio.com/math/index.php?q=I-235F+U-000C00090252+M-C10000AD00+S-001510100000100E1010B0005F8F+R-0125000000000000010200000000000000000000+E-48C91A321B";
-var content = "E-48C91A321B";
+var content = "E-48C91A2E351B";
 var QRinput;
 var functie = "";
 
@@ -66,24 +66,37 @@ function decode(content) {
     console.log(scanned);
 
     //convert to Mathfunction
-    var term = "";
+    var term1 = "";
+    var term2 = "";
     for (var i = 0; i < scanned.length; i++) {     
         switch (scanned[i]) {
             case '^':
                 for (var j = 0; j < i; j++) {
                     if (scanned[j] != "END") {
-                        term += scanned[j];
+                        term1 += scanned[j];
                         console.log(j, scanned[j], scanned[j + 1]);
                         if (j != (i - 1) && !(j + 2 < i)) {
-                            term += "*";
+                            term1 += "*";
                         }
                     }
                 }
+                for (var j = i + 1; j < scanned.indexOf("END", 1); j++) {
+                    if (scanned[j] != "END") {
+                        term2 += scanned[j];
+                        /*
+                        console.log(j, scanned[j], scanned[j + 1]);
+                        if (j != (i - 1) && !(j + 2 < i)) {
+                            term1 += "*";
+                        }*/
+                    }
+                }
+
                 
-                functie += "Math.pow(" + term + "," + scanned[i + 1] + ");";
+                functie += "Math.pow(" + term1 + "," + term2 + ");";
                 //functie += "Math.pow(" + scanned[i - 1] + "," + scanned[i + 1] + ");";
 
-                term = "";
+                term1 = "";
+                term2 = "";
                 break;
         }
     }

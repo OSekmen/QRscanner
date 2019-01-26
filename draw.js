@@ -1,20 +1,12 @@
 var XGridSpacing = 50;
 var YGridSpacing = 50;
 
-var slider = document.getElementById("myRange");
-slider.oninput = function () {
-    XGridSpacing = this.value;
-    //YGridSpacing = this.value;
-    console.log(XGridSpacing);
-    plot();
-
-}
+var slider1 = document.getElementById("myRange1");
+var slider2 = document.getElementById("myRange2");
 
 
-ctx.translate(canvas.width / 2, canvas.height / 2);
+
 function plot() {
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillRect(-canvas.clientWidth / 2, canvas.clientHeight / 2, canvas.clientWidth , -canvas.clientHeight );
     var data = { Xpix: [], Ypix: [], Xreal: [], Yreal: [] };
    
 
@@ -24,7 +16,6 @@ function plot() {
     for (var i = min; i < max; i += 1) {
         data.Xpix.push(i);
         data.Xreal.push((i / XGridSpacing));
-        
     }
 
     //calculate all Y values & add to array
@@ -33,10 +24,6 @@ function plot() {
         data.Yreal.push(calc(data.Xreal[i]));
     }
     
-   
-
-
-
     ctx.beginPath();
     ctx.strokeStyle = "#000000";
     ctx.lineWidth = "1";
@@ -45,8 +32,6 @@ function plot() {
     ctx.moveTo(0, canvas.width / 2);
     ctx.lineTo(0, -canvas.width / 2);
     ctx.stroke();
-
-    
 
     //horizontal
     ctx.beginPath();
@@ -65,14 +50,14 @@ function plot() {
         ctx.fillText("-" + (i / YGridSpacing), 0, i);
     }
     //vertical
-    for (var i = XGridSpacing; i < canvas.height; i += XGridSpacing) {
+    for (var i = XGridSpacing; i <= canvas.width; i += XGridSpacing) {
         ctx.moveTo(i, (canvas.height / 2));
         ctx.lineTo(i, -canvas.height);
         ctx.moveTo(-i, (canvas.height / 2));
         ctx.lineTo(-i, -canvas.height);
 
         ctx.fillText((i / XGridSpacing), i, 0);
-        ctx.fillText("-" + (i / XGridSpacing), -i, 0);
+        ctx.fillText("-" +( i / XGridSpacing), -i, 0);
     }
     ctx.stroke();
 
