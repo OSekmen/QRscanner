@@ -10,7 +10,7 @@ window.onload = function () {
     
     scanQR(); //use camera
     //decode(content); //use build in template
-    //trackMouse();
+    trackMouse();
     
 }
 
@@ -43,7 +43,6 @@ function trackMouse(event) {
     var xCan = ((xPix / XGridSpacing) - ((canvas.width / 2) / (XGridSpacing)));
     var yCan = -((yPix / YGridSpacing) - ((canvas.height / 2) / (YGridSpacing)));
     ctz.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-
     if (Math.abs(xCan - Math.round(xCan) < 0.3) && Math.abs(yCan - Math.round(calc(xCan))) < 2) {
         ctz.beginPath();
         ctz.arc(reverseXSnap(xCan), reverseYSnap(calc(Math.round(xCan))), 5, 0, 2 * Math.PI);

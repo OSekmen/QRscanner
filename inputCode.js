@@ -108,7 +108,7 @@ function decode(content) {
 function scanQR() {
 
     var video = document.createElement("video");
-    var canvasElement = document.getElementById("layer");
+    var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
 
 
