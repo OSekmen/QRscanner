@@ -10,7 +10,7 @@ window.onload = function () {
     ctx.translate(canvas.width / 2, canvas.height / 2);
     scanQR(); //use camera
     //decode(content); //use build in template
-    trackMouse();
+    //trackMouse();
 }
 
 function calc(x) {

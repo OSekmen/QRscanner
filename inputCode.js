@@ -136,7 +136,7 @@ function scanQR() {
                 
                 decode(code.data);
                 video.srcObject.getTracks()[0].stop();
-                canvasElement.style.visibility = "hidden";
+                //canvasElement.style.visibility = "hidden";
 
             }
         }
