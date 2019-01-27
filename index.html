@@ -8,7 +8,7 @@
             position: absolute;
             left: 0;
             top: 0;
-           z-index: 0;
+            z-index: 0;
         }
 
         .infoCanvas {
@@ -17,56 +17,57 @@
             top: 0;
             z-index: 1;
         }
-        .slidecontainer {
-            width: 100%; /* Width of the outside container */
-        }
 
-        /* The slider itself */
-        .slider {
-            -webkit-appearance: none; /* Override default CSS styles */
-            appearance: none;
-            width: 100%; /* Full-width */
-            height: 25px; /* Specified height */
-            background: #d3d3d3; /* Grey background */
-            outline: none; /* Remove outline */
-            opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-            -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-            transition: opacity .2s;
-            z-index: 0;
+        .noUISlider {
+            width: 310px;
+            position: relative;
+            top: 900px;
+            margin: 0px 0px 20px 0px;
+            z-index: 2;
         }
-        
     </style>
     <link href="css/default.css" rel="stylesheet" />
+    <link href="nouislider.min.css" rel="stylesheet" />
+    <script src="jsQR.js"></script>
+    <script src="nouislider.min.js"></script>
 </head>
 <body>
 
     <canvas id="graph" height="900" width="900" class="mainCanvas"></canvas>
-    <canvas id="layer" height="900" width="900" class="infoCanvas" onmousemove="trackMouse(event)" ></canvas>
-    <div style="position:relative; top:900px;">
-        <input type="range" min="1" max="150" step="1" value="50" class="slider" id="myRange1" >
-        <input type="range" min="1" max="150" step="1" value="50" class="slider" id="myRange2">
+    <canvas id="layer" height="900" width="900" class="infoCanvas" onmousemove="trackMouse(event)"></canvas>
+    <div id="sliders">
+        <div id="slider1" class="noUISlider"></div>
+        <div id="slider2" class="noUISlider"></div>
     </div>
-    
+
     <canvas id="canvas" height="900" width="900"></canvas>
 
+
+    <script>
+        noUiSlider.create(slider1, {
+            start: [100],
+            range: {
+                'min': [0],
+                'max': [200]
+            }
+
+        });
+        noUiSlider.create(slider2, {
+            start: [100],
+            range: {
+                'min': [0],
+                'max': [200]
+            }
+
+        });
+
+
+
+    </script>
+    
     <script src="main.js"></script>
     <script src="draw.js"></script>
     <script src="inputCode.js"></script>
-    <script src="jsQR.js"></script>
-    <script>
-        slider1.value = 50;
-        slider2.value = 50;
-        slider1.oninput = function () {
-            XGridSpacing = parseInt(this.value);
-            ctx.clearRect(-canvas.clientWidth / 2, canvas.clientHeight / 2, canvas.clientWidth, -canvas.clientHeight)
-            plot();
-        }
-        slider2.oninput = function () {
-            YGridSpacing = parseInt(this.value);
-            ctx.clearRect(-canvas.clientWidth / 2, canvas.clientHeight / 2, canvas.clientWidth, -canvas.clientHeight)
-            plot();
-        }
-    </script>
 
 
 
