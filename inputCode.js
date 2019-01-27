@@ -102,7 +102,7 @@ function decode(content) {
     }
     
     console.log(functie);
-    plot();
+    //plot();
 }
 
 function scanQR() {
