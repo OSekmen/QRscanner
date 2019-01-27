@@ -1,26 +1,14 @@
+var data = { Xpix: [], Ypix: [], Xreal: [], Yreal: [] };
+
 var XGridSpacing = 50;
 var YGridSpacing = 50;
 
 var slider1 = document.getElementById('slider1');
 var slider2 = document.getElementById('slider2');
 
-slider1.noUiSlider.on('slide', function () {
-    XGridSpacing = parseInt(this.get());
-    ctx.clearRect(-canvas.clientWidth / 2, canvas.clientHeight / 2, canvas.clientWidth, -canvas.clientHeight)
-
-    plot();
-});
-
-slider2.noUiSlider.on('slide', function () {
-    YGridSpacing = parseInt(this.get());
-    ctx.clearRect(-canvas.clientWidth / 2, canvas.clientHeight / 2, canvas.clientWidth, -canvas.clientHeight)
-
-    plot();
-});
-
 function plot() {
-   
-    var data = { Xpix: [], Ypix: [], Xreal: [], Yreal: [] };
+    
+    
    
 
     //add all x values to array
@@ -84,4 +72,5 @@ function plot() {
     ctx.stroke();
     ctx.scale(1, -1);
    // functie = "";
+   data = { Xpix: [], Ypix: [], Xreal: [], Yreal: [] };
 }

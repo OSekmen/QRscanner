@@ -19,10 +19,10 @@
         }
 
         .noUISlider {
-            width: 310px;
+            width: 900px;
             position: relative;
             top: 900px;
-            margin: 0px 0px 20px 0px;
+            margin: 20px 0px 20px 0px;
             z-index: 2;
         }
     </style>
@@ -47,7 +47,7 @@
         noUiSlider.create(slider1, {
             start: [100],
             range: {
-                'min': [0],
+                'min': [1],
                 'max': [200]
             }
 
@@ -55,10 +55,21 @@
         noUiSlider.create(slider2, {
             start: [100],
             range: {
-                'min': [0],
+                'min': [1],
                 'max': [200]
             }
 
+        });
+        slider1.noUiSlider.on('slide', function () {
+            XGridSpacing = parseInt(this.get());
+            ctx.clearRect(-canvas.clientWidth / 2, canvas.clientHeight / 2, canvas.clientWidth, -canvas.clientHeight)
+            plot();
+        });
+
+        slider2.noUiSlider.on('slide', function () {
+            YGridSpacing = parseInt(this.get());
+            ctx.clearRect(-canvas.clientWidth / 2, canvas.clientHeight / 2, canvas.clientWidth, -canvas.clientHeight)
+            plot();
         });
 
 

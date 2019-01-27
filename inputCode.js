@@ -1,5 +1,5 @@
 ﻿//var content = "http://wes.casio.com/math/index.php?q=I-235F+U-000C00090252+M-C10000AD00+S-001510100000100E1010B0005F8F+R-0125000000000000010200000000000000000000+E-48C91A321B";
-var content = "E-48C91A2E351B";
+var content = "E-48C91A321B";
 var QRinput;
 var functie = "";
 
