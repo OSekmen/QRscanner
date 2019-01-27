@@ -102,12 +102,12 @@ function decode(content) {
     }
     
     console.log(functie);
-    //plot();
+    plot();
 }
 
 function scanQR() {
 
-    //var video = document.createElement("video");
+    var video = document.createElement("video");
     var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
 
@@ -136,7 +136,7 @@ function scanQR() {
                 
                 decode(code.data);
                 video.srcObject.getTracks()[0].stop();
-                //canvasElement.style.visibility = "hidden";
+                canvasElement.style.visibility = "hidden";
 
             }
         }
