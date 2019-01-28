@@ -1,30 +1,27 @@
-var data = { Xpix: [], Ypix: [], Xreal: [], Yreal: [] };
-
 var XGridSpacing = 50;
 var YGridSpacing = 50;
 
 var slider1 = document.getElementById('slider1');
 var slider2 = document.getElementById('slider2');
 
+var graph1 = new Graph("Math.pow(x,1)");
+var graph2 = new Graph("Math.pow(x,2)");
+
 function plot() {
-    
-    
-   
+    axis();
+    grid();
 
-    //add all x values to array
-    var min = -canvas.width / 2;
-    var max = canvas.width / 2;
-    for (var i = min; i < max; i += 1) {
-        data.Xpix.push(i);
-        data.Xreal.push((i / XGridSpacing));
-    }
+    graph1.calculate();
+    graph2.calculate();
 
-    //calculate all Y values & add to array
-    for (var i = 0; i < data.Xpix.length; i++) {
-        data.Ypix.push(calc(data.Xpix[i]));
-        data.Yreal.push(calc(data.Xreal[i]));
-    }
-    
+    graph1.update();
+    graph2.update();
+
+    graph1.mouseSnap();
+    graph2.mouseSnap();
+}
+
+function axis() {
     ctx.beginPath();
     ctx.strokeStyle = "#000000";
     ctx.lineWidth = "1";
@@ -33,6 +30,9 @@ function plot() {
     ctx.moveTo(0, canvas.width / 2);
     ctx.lineTo(0, -canvas.width / 2);
     ctx.stroke();
+}
+
+function grid() {
 
     //horizontal
     ctx.beginPath();
@@ -58,19 +58,7 @@ function plot() {
         ctx.lineTo(-i, -canvas.height);
 
         ctx.fillText((i / XGridSpacing), i, 0);
-        ctx.fillText("-" +( i / XGridSpacing), -i, 0);
+        ctx.fillText("-" + (i / XGridSpacing), -i, 0);
     }
     ctx.stroke();
-
-    ctx.scale(1, -1);
-    ctx.beginPath();
-    ctx.lineWidth = "2";
-    ctx.strokeStyle = "#2818bc";
-    for (var i = 0; i < data.Xreal.length; i++) {
-        ctx.lineTo(data.Xreal[i] * XGridSpacing, data.Yreal[i] * YGridSpacing);
-    }
-    ctx.stroke();
-    ctx.scale(1, -1);
-   // functie = "";
-   data = { Xpix: [], Ypix: [], Xreal: [], Yreal: [] };
 }
