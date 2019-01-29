@@ -2,6 +2,12 @@
 var ctx = canvas.getContext("2d");
 
 
+var Zcanvas = document.getElementById("layer");
+var ctz = Zcanvas.getContext("2d");
+
+var button1 = new Button();
+
+
 window.onload = function () {
 
 
@@ -9,7 +15,6 @@ window.onload = function () {
     
     //scanQR(); //use camera
     decode(content); //use build in template
-    
     
 }
 
@@ -31,12 +36,6 @@ function reverseYSnap(yCan) {
     return Math.round(-yCan) * YGridSpacing + (canvas.height / 2);
 }
 
-
-function trackMouse() {
-    
-   
-    
-}
 
 
 

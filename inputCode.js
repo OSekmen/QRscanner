@@ -3,6 +3,15 @@ var content = "E-48C91A321B";
 var QRinput;
 var functie = "";
 
+function createButton() {
+    var buttonCanvas = document.createElement("button");
+    buttonCanvas.className ="button";
+    var t = document.createTextNode("Add Graph");
+    buttonCanvas.appendChild(t);
+    document.getElementById("buttonCase").appendChild(buttonCanvas);
+
+}
+
 function decode(content) {
      //scanner enable
     var dict = {
