@@ -11,9 +11,11 @@ class Graph {
         this.state = state;
         this.prevX - prevX;
         this.prevY = prevY;
-        
+        this.calculate();
     }
-    
+
+
+
     calc(x) {
     return (eval(this.functie));
     }
@@ -33,7 +35,7 @@ class Graph {
             this.data.Ypix.push(this.calc(this.data.Xpix[i]));
             this.data.Yreal.push(this.calc(this.data.Xreal[i]));
         }
-
+        this.update();
     }
 
     update() {
@@ -48,7 +50,6 @@ class Graph {
         }
         ctx.stroke();
         ctx.scale(1, -1);
-
     }
 
 

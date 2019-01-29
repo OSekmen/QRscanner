@@ -36,7 +36,12 @@
         .button{
             display:block;
         }
+        #videoCanvas{
+            z-index=1;
+            position:relative;
+            top:1000px;
 
+        }
         
 
     </style>
@@ -55,11 +60,11 @@
         <div id="slider1" class="noUISlider"></div>
         <div id="slider2" class="noUISlider"></div>
         <div id="buttonCase">
-            <button onclick="createButton()">Add Graph</button>
+            <button onclick="scanQR()">Add Graph</button>
         </div>
     </div>
 
-    <canvas id="canvas" height="900" width="900"></canvas>
+    <canvas id="videoCanvas" height="900" width="900"></canvas>
 
 
     <script>

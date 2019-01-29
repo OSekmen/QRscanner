@@ -4,24 +4,19 @@ var YGridSpacing = 50;
 var slider1 = document.getElementById('slider1');
 var slider2 = document.getElementById('slider2');
 
-var graph1 = new Graph("Math.pow(x,1)", 'blue');
-var graph2 = new Graph("Math.pow(x,2)", 'green');
 
 function plot() {
     axis();
     grid();
 
-    graph1.calculate();
-    graph2.calculate();
-
-    graph1.update();
-    graph2.update();
 
 }
 
 function trackMouse(event) {
-    graph2.mouseSnap(event);
-    graph1.mouseSnap(event);
+    for (var i = 0; i <numberGraphs.length; i++) {
+        numberGraphs[i].mouseSnap(event);
+
+    }
 }
 
 function axis() {

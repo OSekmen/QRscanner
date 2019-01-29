@@ -3,13 +3,16 @@ var content = "E-48C91A321B";
 var QRinput;
 var functie = "";
 
-function createButton() {
+function createButton(functie) {
+    
+    var graph1 = new Graph(functie, 'blue');
+    numberGraphs.push(graph1);
     var buttonCanvas = document.createElement("button");
-    buttonCanvas.className ="button";
+    buttonCanvas.className = "button";
     var t = document.createTextNode("Add Graph");
     buttonCanvas.appendChild(t);
     document.getElementById("buttonCase").appendChild(buttonCanvas);
-
+  
 }
 
 function decode(content) {
@@ -111,15 +114,16 @@ function decode(content) {
     }
     
     console.log(functie);
-    plot();
+    createButton(functie);
 }
 
 function scanQR() {
 
     var video = document.createElement("video");
-    var canvasElement = document.getElementById("canvas");
+    var canvasElement = document.getElementById("videoCanvas");
     var canvas = canvasElement.getContext("2d");
 
+    canvasElement.style.visibility = "visible";
 
     // Use facingMode: environment to attemt to get the front camera on phones
     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function (stream) {
@@ -143,10 +147,10 @@ function scanQR() {
             });
             if (code) {
                 
-                decode(code.data);
+                
                 video.srcObject.getTracks()[0].stop();
                 canvasElement.style.visibility = "hidden";
-
+                decode(code.data);
             }
         }
         requestAnimationFrame(tick);

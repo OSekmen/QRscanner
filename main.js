@@ -7,6 +7,8 @@ var ctz = Zcanvas.getContext("2d");
 
 var button1 = new Button();
 
+var numberGraphs = [];
+
 
 window.onload = function () {
 
@@ -14,8 +16,8 @@ window.onload = function () {
     ctx.translate(canvas.width / 2, canvas.height / 2);
     
     //scanQR(); //use camera
-    decode(content); //use build in template
-    
+    //decode(content); //use build in template
+    plot();
 }
 
 
